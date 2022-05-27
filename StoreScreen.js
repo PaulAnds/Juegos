@@ -35,11 +35,11 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     alignItems: 'center',  
     borderRadius: 50,
-    marginTop: 100,
-    padding: 10,
+    marginTop: 10,
+    padding: 11,
     overflow: 'hidden',
 
-    width: '95%',
+    width: '85%',
     height: 'auto',
   },
 

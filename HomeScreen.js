@@ -9,21 +9,19 @@ function HomeScreen({}) {
         <View style ={styles.container}>
             <Image
           style={{ width: '100%', height: 200, marginBottom: 100 }}
-          source={require("./assets/banner.png")}
+          source={require("./assets/gaming.png")}
         />
-            <Text style={styles.text}>Welcome</Text>
-            <Text style={styles.desc}>
-I have learned from Peep fans that Gus was a powerful and influential lyricist and music artist. It was Gus’s honesty that compelled so many people, worldwide, to connect with him. Gus was particularly observant, and able to express his observations clearly and poetically.</Text>
-            <Button 
+            <Text style={styles.text}>PaulAnds Inc.</Text>
+            <Text style={styles.desc}> An app for all my games  </Text>
+          <Button 
                 backgroundColor = "white"
                 color="#ffd600"
-                title="Go to Store!"
+                title="Games"
                 onPress={() => navigation.navigate("Store", {
                     id: 1,
                     title: "nombre de camisa",
                     description: 'This is where the description goes',
                     url: 'this is where the url goes',
-                    stock: 100
                 })}
             />
             

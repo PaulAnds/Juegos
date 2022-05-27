@@ -36,22 +36,4 @@ export default StyleSheet.create({
         fontStyle: 'italic',
         fontWeight: 'bold',
     },
-    
-    footer: {
-        justifyContent: 'space-around',
-        flex: 0,
-        backgroundColor: "#424242",
-        position: 'absolute',
-        bottom: 0,
-        flexDirection: 'row',
-        alignItems: 'center',
-        alignSelf: 'flex-end',
-        width: 400,
-        height: 50,
-    },
-    
-    pic:{
-        width: 150, 
-        height: 150,
-    }
 })
