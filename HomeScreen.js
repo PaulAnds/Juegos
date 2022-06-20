@@ -17,7 +17,7 @@ function HomeScreen({}) {
                 backgroundColor = "white"
                 color="#ffd600"
                 title="Games"
-                onPress={() => navigation.navigate("Store", {
+                onPress={() => navigation.navigate("GameScreen", {
                     id: 1,
                     title: "nombre de camisa",
                     description: 'This is where the description goes',

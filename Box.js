@@ -1,8 +1,8 @@
 import React from 'react';
-import {StyleSheet, View, Button, Text,Image,TouchableOpacity} from 'react-native';
+import {StyleSheet, View, Text,Image,TouchableOpacity} from 'react-native';
 import {useNavigation} from '@react-navigation/native'
 
-function Box ({title, id, description, url,}){
+function Box ({title, id, description, url,game}){
 
     const navigation = useNavigation();
 
@@ -14,6 +14,7 @@ function Box ({title, id, description, url,}){
                     id: id,
                     title:title,
                     description: description,
+                    game: game,
                     url: url
                     })}}>
                     

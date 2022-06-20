@@ -3,7 +3,7 @@ import {StyleSheet,View,ScrollView} from 'react-native';
 import Box from './Box'
 import tasks from './data/tasks';
 
-function StoreScreen({}) {
+function GameScreen({}) {
         
     return (
         <View style={{backgroundColor: '#ab47bc', height: '100%'}}>
@@ -14,9 +14,9 @@ function StoreScreen({}) {
                     <Box 
                       key={i}
                       url = {task.url}
+                      game = {task.game}
                       title= {task.title}
                       description = {task.description}
-                      stock = {task.stock}
                     />
                     ))
                   }
@@ -49,4 +49,4 @@ const styles = StyleSheet.create({
   
 })
 
-export default StoreScreen;
+export default GameScreen;
