@@ -32,23 +32,32 @@ function calculateText(number, random){
 const random = generateRandomNumber(100);
 
 function GuessNumber(props) {
+  const [playing, setPlaying] = useState(false);
   const [number, setNumber] = useState('');
   const [message, setMessage] = useState('');
   const [guessList, setGuessList] = useState([]);
   const [win, setWin] = useState(false);
+  const [rand,setRand] = useState(random);
   const [count, setCount] = useState(0);
 
   const handleOnChange = (newNumber) => {
     setNumber(newNumber);
   }
 
+  
+
   const handleOnPress = () => {
     const num = parseInt(number);
-    const numRand = parseInt(random);
-    const text = calculateText(num, numRand);
-
-    if(num === numRand){
+    const text = calculateText(num, rand);
+    if(num === rand){
+      setPlaying(false);
+      setMessage('');
+      setGuessList([
+        0,
+      ]);
       setWin(true);
+      setRand(generateRandomNumber(100));
+      setCount(0);
     }
 
     setNumber("");
@@ -63,8 +72,20 @@ function GuessNumber(props) {
 
     return (
         <View style={styles.body}>
+          <View style = {styles.button}>
+            <Button 
+              backgroundColor = "white"
+              color="#ffd600"
+              title="Play"
+              onPress={() => {
+                setPlaying(true);
+              
+            }}
+            />
+          </View>
           <View style={styles.game}>
           <TextInput
+            editable={playing}
             style={styles.input}
             autoFocus
             placeholder="Guess My Number"
@@ -73,6 +94,7 @@ function GuessNumber(props) {
           />
 
           <Button
+          disabled = {!playing}
             title="Check"
             backgroundColor = "white"
             color="#ffd600"
@@ -106,6 +128,11 @@ const styles = StyleSheet.create({
       
   },
 
+  button:{
+    top:'13%'
+    
+  },
+
   input: {
       width: 200,
       textAlign: 'center',
@@ -115,3 +142,4 @@ const styles = StyleSheet.create({
 });
 
 export default GuessNumber;
+
