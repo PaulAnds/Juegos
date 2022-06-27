@@ -21,18 +21,20 @@ export default StyleSheet.create({
 
     },
     containerView:{
+        top: '-10%',
         justifyContent: 'space-around',
         alignItems: 'center',
         backgroundColor: '#b47cff',
         margin: 20,
         padding: 5,
         width:300,
-        height: 100,
+        height: 200,
     },
     
     containerText:{
         color: '#ffd600',
-        fontSize: 24,
+        textAlign: 'center',
+        fontSize: 18,
         fontStyle: 'italic',
         fontWeight: 'bold',
     },

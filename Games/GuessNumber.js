@@ -51,13 +51,7 @@ function GuessNumber(props) {
     const text = calculateText(num, rand);
     if(num === rand){
       setPlaying(false);
-      setMessage('');
-      setGuessList([
-        0,
-      ]);
       setWin(true);
-      setRand(generateRandomNumber(100));
-      setCount(0);
     }
 
     setNumber("");
@@ -74,27 +68,33 @@ function GuessNumber(props) {
         <View style={styles.body}>
           <View style = {styles.button}>
             <Button 
+              disabled = {playing}
               backgroundColor = "white"
               color="#ffd600"
               title="Play"
               onPress={() => {
                 setPlaying(true);
-              
+                setMessage('');
+                setWin(false);
+                setCount(0);
+                setRand(generateRandomNumber(100));
+                setGuessList([
+        
+                ]);
             }}
             />
           </View>
           <View style={styles.game}>
-          <TextInput
-            editable={playing}
-            style={styles.input}
-            autoFocus
-            placeholder="Guess My Number"
-            onChangeText = {handleOnChange}
-            defaultValue = {number}
-          />
-
+            <TextInput
+              editable={playing}
+              style={styles.input}
+              autoFocus
+              placeholder="Guess My Number"
+              onChangeText = {handleOnChange}
+              defaultValue = {number}
+            />
           <Button
-          disabled = {!playing}
+            disabled = {!playing}
             title="Check"
             backgroundColor = "white"
             color="#ffd600"
@@ -102,13 +102,13 @@ function GuessNumber(props) {
           />
           {
             win?
-            <Text>Congratulations! you found the number in {count} tires</Text>
-            :
-            <Text>{message}</Text>
+            <Text style={styles.text}> Congratulations!, You found the number in <Text  style={{...styles.text,fontWeight: 'bold'}}> {count}</Text> tries.</Text>
+                     :
+            <Text style={styles.text}>{message}</Text>
           }
           <List data = {mapItems(guessList)}/>
         </View>
-        </View>
+      </View>
     );
 }
 
@@ -117,6 +117,12 @@ const styles = StyleSheet.create({
 
   body:{
     backgroundColor: '#ab47bc',
+  },
+
+  text:{
+    fontSize:22,
+    textAlign: 'center',
+    padding: 30,
   },
 
   game: {
@@ -134,6 +140,7 @@ const styles = StyleSheet.create({
   },
 
   input: {
+    fontSize:22,
       width: 200,
       textAlign: 'center',
       marginBottom: 10,

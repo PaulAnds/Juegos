@@ -2,7 +2,7 @@ import React from 'react';
 import {StyleSheet, View, Text,Image,TouchableOpacity} from 'react-native';
 import {useNavigation} from '@react-navigation/native'
 
-function Box ({title, id, description, url,game}){
+function Box ({title, id, description, url,game,butt}){
 
     const navigation = useNavigation();
 
@@ -15,13 +15,12 @@ function Box ({title, id, description, url,game}){
                     title:title,
                     description: description,
                     game: game,
+                    butt: butt,
                     url: url
                     })}}>
-                    
                 <Image style={{ width: 100, height: 100}} source={{uri: url}}/>
             </TouchableOpacity>
-            <Text style = {{color: "#ffd600", fontWeight: "bold",fontSize: 20}}>{title}</Text>
-            
+            <Text style = {{color: "#ffd600", fontWeight: "bold",fontSize: 20}}>{butt}</Text>
         </View>
     );
 }

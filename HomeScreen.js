@@ -21,6 +21,7 @@ function HomeScreen({}) {
                     id: 1,
                     title: "nombre de camisa",
                     description: 'This is where the description goes',
+                    butt: 'button name',
                     url: 'this is where the url goes',
                 })}
             />

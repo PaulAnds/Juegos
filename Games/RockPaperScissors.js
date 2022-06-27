@@ -56,40 +56,42 @@ function RockPaperScissors() {
         }
     }
     return (
-       <View style={styles.body}>
+    <View style={styles.body}>
         <View style={styles.game}>
-        <Text style={styles.title}>Welcome to Rock Paper Scissors 1.0</Text>
-        <Button 
+            <Text style={styles.title}>Welcome to Rock Paper Scissors 1.0</Text>
+            <Button 
+                disabled = {!playing}
                 backgroundColor = "white"
                 color="#ffd600"
                 title="Play"
                 onPress={() => {
                     setPlaying(false);
+                    setText('');
+                    setEnemy('');
+                    setWinner('');
                     score = 0;
                     escore = 0;
                     counter = 0;
                 }}
             />
-           <Text style={{ fontSize: 28,padding: 10}}>Score: {score} vs {escore}</Text>
-           <Text style={{ fontSize: 18}}>Choose your weapon</Text>
-           <Text>{text}</Text>
-           <View style={{ flexDirection: 'row'}}>
-           <TouchableOpacity disabled= {playing} onPress={handleOnClickr}>
-                <Image style={styles.image} source={require('../assets/rock.png')}/>
-           </TouchableOpacity>
-           <TouchableOpacity disabled= {playing} onPress={handleOnClickp}>
-                <Image style={styles.image} source={require('../assets/paper.png')}/>
-           </TouchableOpacity>
-           <TouchableOpacity disabled= {playing} onPress={handleOnClicks}>
-                <Image style={styles.image} source={require('../assets/scissors.png')}/>
-           </TouchableOpacity>
-           </View>
+            <Text style={{ fontSize: 28,padding: 10}}>Score: {score} vs {escore}</Text>
+            <Text style={{ fontSize: 18}}>Choose your weapon</Text>
+            <Text>{text}</Text>
+            <View style={{ flexDirection: 'row'}}>
+                <TouchableOpacity disabled= {playing} onPress={handleOnClickr}>
+                    <Image style={styles.image} source={require('../assets/rock.png')}/>
+                </TouchableOpacity>
+                <TouchableOpacity disabled= {playing} onPress={handleOnClickp}>
+                    <Image style={styles.image} source={require('../assets/paper.png')}/>
+                </TouchableOpacity>
+                <TouchableOpacity disabled= {playing} onPress={handleOnClicks}>
+                    <Image style={styles.image} source={require('../assets/scissors.png')}/>
+                </TouchableOpacity>
+            </View>
             <Text>{enemy}</Text>
-           <Text style={styles.glowing}>{winner}</Text>
+            <Text style={styles.glowing}>{winner}</Text>
         </View>
-       </View> 
-
-
+    </View> 
     )
   }
 
@@ -105,17 +107,21 @@ const styles = StyleSheet.create({
     glowing:{
         color:"#ffd600",
         fontSize: 28,
+        textShadowColor: '#f5f7c3',
+        textShadowRadius: 15,
     },
 
     title:{
         fontSize: 28,
-      textAlign: 'center', 
-      padding: 40 
+        textAlign: 'center', 
+        padding: 40,
     },
+
     image:{
         width: 100,
         height: 100
     },
+
     game: {
       display: 'flex',
       alignItems: 'center',

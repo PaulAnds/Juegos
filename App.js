@@ -10,6 +10,9 @@ import DetailsScreen from './DetailsScreen';
 import GuessNumber from './Games/GuessNumber';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import RockPaperScissors from './Games/RockPaperScissors';
+import GuessYourNumber from './Games/GuessYourNumber';
+import GuessNumberMenu from './Games/GuessNumberMenu';
+import TicTacToe from './Games/TicTacToe';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -65,7 +68,22 @@ export default function App() {
           }, 
           headerTintColor: '#fff',
            }}/>
+           <Stack.Screen name="GYN" component={GuessYourNumber} options={{ title: "Games!",headerStyle: {
+            backgroundColor: '#790e8b',
+          }, 
+          headerTintColor: '#fff',
+           }}/>
            <Stack.Screen name="RPS" component={RockPaperScissors} options={{ title: "Games!",headerStyle: {
+            backgroundColor: '#790e8b',
+          }, 
+          headerTintColor: '#fff',
+           }}/>
+           <Stack.Screen name="GuessNumberMenu" component={GuessNumberMenu}options={{ title: "Games!",headerStyle: {
+            backgroundColor: '#790e8b',
+          }, 
+          headerTintColor: '#fff',
+           }}/>
+           <Stack.Screen name="TicTacToe" component={TicTacToe}options={{ title: "tictactoe!",headerStyle: {
             backgroundColor: '#790e8b',
           }, 
           headerTintColor: '#fff',
