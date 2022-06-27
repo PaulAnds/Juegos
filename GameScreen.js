@@ -7,7 +7,6 @@ function GameScreen({}) {
         
     return (
         <View style={{backgroundColor: '#ab47bc', height: '100%'}}>
-          <Text style={styles.top}>*Once in a game click 'Play' to start*</Text>
           <ScrollView style={styles.scrollView}>
             <View style = {styles.root}>
               {
@@ -42,14 +41,6 @@ const styles = StyleSheet.create({
 
     width: '85%',
     height: 'auto',
-  },
-
-  top:{
-      color:"#ffd600",
-      fontSize: 23,
-      textShadowColor: '#f5f7c3',
-      textShadowRadius: 15,
-      textAlign: 'center',
   },
 
   scrollView: {

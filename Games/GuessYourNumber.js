@@ -41,6 +41,7 @@ const GuessYourNumber = () => {
  
     return (
         <View style={styles.body}>
+        <Text style={styles.top}>*Once in a game click 'Play' to start*</Text>
             <View style = {styles.button}>
             <Button 
               disabled = {playing}
@@ -109,7 +110,13 @@ const styles = StyleSheet.create({
       button:{
         top:'13%'
         
-      },
+      },top:{
+        color:"#ffd600",
+        fontSize: 23,
+        textShadowColor: '#f5f7c3',
+        textShadowRadius: 15,
+        textAlign: 'center',
+    },
       game: {
         display: 'flex',
         justifyContent: 'center',

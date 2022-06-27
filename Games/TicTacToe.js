@@ -13,7 +13,7 @@ function TicTacToe() {
   const [map, setMap] = useState(emptyMap);
   const [currentTurn, setCurrentTurn] = useState("x");
   const [message, setMessage] = useState('');
-  const [playing, setPlaying] = useState(false);
+  const [playing, setPlaying] = useState(true);
 
   useEffect(() => {
     if (currentTurn === "o") {
@@ -119,8 +119,16 @@ function TicTacToe() {
     setPlaying(false);
   };
 
+  const copyArray = (original) => {
+    //copia el arreglo actual
+    const copy = original.map((arr) => {
+      return arr.slice();
+    });
+    return copy;
+  };
+
   const botTurn = () => {
-    // collect all possible options
+    // checa todas las opciones de donde poner
     const possiblePositions = [];
     map.forEach((row, rowIndex) => {
       row.forEach((cell, columnIndex) => {
@@ -132,7 +140,38 @@ function TicTacToe() {
 
     let chosenOption;
 
-    // choose random
+      possiblePositions.forEach((possiblePosition) => {
+        //hace una copia del mapa actual
+        const mapCopy = copyArray(map);
+
+        //se va a poner el o donde se escoja
+        mapCopy[possiblePosition.row][possiblePosition.col] = "o";
+
+        //si puede ganar entonces escoje gana
+        const winner = getWinner(mapCopy);
+        if (winner === "o") {
+          chosenOption = possiblePosition;
+        }
+      });
+      
+      //si no tiene posibilidad de ganar checa si tu vas a ganar
+      if (!chosenOption) {
+        possiblePositions.forEach((possiblePosition) => {
+          //hace una copia del mapa actual
+          const mapCopy = copyArray(map);
+
+          //se va a poner el x donde se escoja
+          mapCopy[possiblePosition.row][possiblePosition.col] = "x";
+
+          //si ve donde la x puede ganar, entonces pone ahi
+          const winner = getWinner(mapCopy);
+          if (winner === "x") {
+            chosenOption = possiblePosition;
+          }
+        });
+    }
+
+    //codigo principal
     if (!chosenOption) {
       chosenOption =
         possiblePositions[Math.floor(Math.random() * possiblePositions.length)];
@@ -149,7 +188,7 @@ function TicTacToe() {
         <Text style={{fontSize: 24,color: "black", position: "absolute",top: 50,}}>
           Current Turn: {currentTurn.toUpperCase()}
         </Text>
-        <Text style={{fontSize: 27,color: "black", position: "absolute",bottom: '74%',}}>{message}</Text>
+        <Text style={styles.top}>{message}</Text>
         <View style={styles.map}>
           {map.map((row, rowIndex) => (
             <View key={`row-${rowIndex}`} style={styles.row}>
@@ -170,7 +209,7 @@ function TicTacToe() {
           disabled = {playing}
           backgroundColor = "white"
           color="#ffd600"
-          title="Play"
+          title="Restart"
           onPress={() => {
             setPlaying(true);
             setMessage('');
@@ -217,6 +256,15 @@ const styles = StyleSheet.create({
     bottom: 50,
     flexDirection: "row",
   },
+  top:{
+    position: "absolute",
+    bottom: '75%',
+    color:"#ffd600",
+    fontSize: 28,
+    textShadowColor: '#f5f7c3',
+    textShadowRadius: 15,
+    textAlign: 'center',
+},
   button: {
     color: "white",
     margin: 10,

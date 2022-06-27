@@ -11,6 +11,7 @@ function RockPaperScissors() {
     const [text, setText] = useState('');
     const [winner, setWinner] = useState('');
     const [playing, setPlaying] = useState(true);
+    const [start, setStart] = useState(true);
 
     const handleOnClicks = () => {
         setRandom(generateRandomNumber(4));
@@ -57,13 +58,31 @@ function RockPaperScissors() {
     }
     return (
     <View style={styles.body}>
+    <Text style={styles.top}>*Once in a game click 'Play' to start*</Text>
         <View style={styles.game}>
             <Text style={styles.title}>Welcome to Rock Paper Scissors 1.0</Text>
+            <View>
+            <Button 
+                disabled = {!start}
+                backgroundColor = "white"
+                color="#ffd600"
+                title="Play"
+                onPress={() => {
+                    setStart(false);
+                    setPlaying(false);
+                    setText('');
+                    setEnemy('');
+                    setWinner('');
+                    score = 0;
+                    escore = 0;
+                    counter = 0;
+                }}
+            />
             <Button 
                 disabled = {!playing}
                 backgroundColor = "white"
                 color="#ffd600"
-                title="Play"
+                title="Restart"
                 onPress={() => {
                     setPlaying(false);
                     setText('');
@@ -74,6 +93,7 @@ function RockPaperScissors() {
                     counter = 0;
                 }}
             />
+            </View>
             <Text style={{ fontSize: 28,padding: 10}}>Score: {score} vs {escore}</Text>
             <Text style={{ fontSize: 18}}>Choose your weapon</Text>
             <Text>{text}</Text>
@@ -110,7 +130,13 @@ const styles = StyleSheet.create({
         textShadowColor: '#f5f7c3',
         textShadowRadius: 15,
     },
-
+    top:{
+        color:"#ffd600",
+        fontSize: 23,
+        textShadowColor: '#f5f7c3',
+        textShadowRadius: 15,
+        textAlign: 'center',
+    },
     title:{
         fontSize: 28,
         textAlign: 'center', 

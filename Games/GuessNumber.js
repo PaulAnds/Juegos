@@ -39,6 +39,7 @@ function GuessNumber(props) {
   const [win, setWin] = useState(false);
   const [rand,setRand] = useState(random);
   const [count, setCount] = useState(0);
+  const [shouldShow, setShouldShow] = useState(true);
 
   const handleOnChange = (newNumber) => {
     setNumber(newNumber);
@@ -66,23 +67,25 @@ function GuessNumber(props) {
 
     return (
         <View style={styles.body}>
+        <Text style={styles.top}>*Click 'Play' to start*</Text>
           <View style = {styles.button}>
-            <Button 
-              disabled = {playing}
-              backgroundColor = "white"
-              color="#ffd600"
-              title="Play"
-              onPress={() => {
-                setPlaying(true);
-                setMessage('');
-                setWin(false);
-                setCount(0);
-                setRand(generateRandomNumber(100));
-                setGuessList([
-        
-                ]);
-            }}
-            />
+
+          <Button 
+          disabled = {playing}
+          backgroundColor = "white"
+          color="#ffd600"
+          title="Play"
+          onPress={() => {
+            setPlaying(true);
+            setMessage('');
+            setWin(false);
+            setCount(0);
+            setRand(generateRandomNumber(100));
+            setGuessList([
+    
+            ]);
+          }}
+        />
           </View>
           <View style={styles.game}>
             <TextInput
@@ -124,7 +127,13 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     padding: 30,
   },
-
+  top:{
+    color:"#ffd600",
+    fontSize: 30,
+    textShadowColor: '#f5f7c3',
+    textShadowRadius: 15,
+    textAlign: 'center',
+},
   game: {
     display: 'flex',
     justifyContent: 'center',
