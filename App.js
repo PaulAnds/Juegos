@@ -21,7 +21,8 @@ const Drawer = createDrawerNavigator();
 function Homes() {
   return (
     <Tab.Navigator screenOptions={({route}) => ({
-        tabBarIcon: ({ focused, color, size}) => {
+        
+        tabBarIcon: ({ focused, color, size,tintColor}) => {
           let iconName;
           let rn = route.name
 
@@ -30,19 +31,24 @@ function Homes() {
           else if(rn === "GameScreen")
           iconName = focused ? 'apps' : 'apps-outline';
 
-          return <Ionicons name={iconName} size={size} color={ color } />
+          return <Ionicons name={iconName} size={size} color={ '#ffd600' } />
         } })}>
       <Tab.Screen name="Home" component={HomeScreen} options={{
          headerStyle: {
           backgroundColor: '#790e8b',
         }, 
         headerTintColor: '#fff',
-        
+        tabBarStyle: {
+          backgroundColor: '#790e8b'
+        }
         }}/>
       <Tab.Screen name="GameScreen" component={GameScreen} options={{
           headerStyle: {
             backgroundColor: '#790e8b',
           }, 
+          tabBarStyle: {
+            backgroundColor: '#790e8b'
+          },
           headerTintColor: '#fff',
           }}/>
     </Tab.Navigator>

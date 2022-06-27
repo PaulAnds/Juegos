@@ -155,6 +155,7 @@ function TicTacToe() {
             <View key={`row-${rowIndex}`} style={styles.row}>
               {row.map((cell, columnIndex) => (
                 <Cell
+                  isDisabled = {!playing}
                   key={`row-${rowIndex}-col-${columnIndex}`}
                   cell={cell}
                   onPress={() => onPress(rowIndex, columnIndex)}

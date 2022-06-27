@@ -8,7 +8,7 @@ export default StyleSheet.create({
     },
 
     text: {
-        color: "#ffff",
+        color: "#000",
         fontSize: 45,
         marginBottom: 10,
     },

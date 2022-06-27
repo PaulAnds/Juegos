@@ -3,9 +3,10 @@ import { View, StyleSheet, Pressable } from "react-native";
 import Cross from "./Cross";
 
 const Cell = (props) => {
-  const { cell, onPress } = props;
+  const { cell, onPress, isDisabled } = props;
   return (
     <Pressable
+      disabled={isDisabled}
       onPress={() => onPress()}
       style={styles.cell}
     >
